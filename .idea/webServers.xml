@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a0b1e0a5-2a2f-4fca-96d4-7da0dc198135" name="HETZNER" url="https://gostudentapi.s1910456001.student.kwmhgb.at/">
+        <fileTransfer rootFolder="/usr/home/sstud105/public_html/goStudentAPI/goStudentServer" accessType="SFTP" host="dedi50.your-server.de" port="222" sshConfigId="3a52fb84-23b8-4c1f-aa17-2ea460f741d0" sshConfig="sstud105@dedi50.your-server.de:222 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
