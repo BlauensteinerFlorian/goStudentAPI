@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequestsTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
 
-            $table->string('state')->default('pending');
+            $table->text('text');
 
-            // Foreign keys
-            $table->foreignId('offer_id')->constrained()->onDelete('cascade');
+            //Foreign keys
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
+            $table->foreignId('offer_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ class CreateRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('messages');
     }
 }
