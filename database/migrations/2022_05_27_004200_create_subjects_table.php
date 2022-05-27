@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->id();
 
             $table->string('title')->unique();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

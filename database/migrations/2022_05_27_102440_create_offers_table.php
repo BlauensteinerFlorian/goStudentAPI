@@ -20,7 +20,7 @@ class CreateOffersTable extends Migration
             $table->string('state')->default('open');
             $table->string('start_time');
             $table->string('end_time');
-            $table->string('date');
+            $table->date('date');
 
             // Foreign Keys
             $table->foreignId('student_id')->nullable()->constrained('users')->onDelete('cascade');
