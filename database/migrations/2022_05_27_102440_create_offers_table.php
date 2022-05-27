@@ -23,7 +23,7 @@ class CreateOffersTable extends Migration
             $table->string('date');
 
             // Foreign Keys
-            $table->foreignId('student_id')->nullable()->constrainend('users')->nullonDelete();
+            $table->foreignId('student_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('subject_id')->constrained()->onDelete('cascade');
             $table->timestamps();
