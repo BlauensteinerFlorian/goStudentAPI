@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $subjects = DB::table('subjects')->get();
+    return view('welcome', compact('subjects'));
 });
