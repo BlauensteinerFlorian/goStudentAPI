@@ -60,4 +60,10 @@ class OfferController extends Controller
         }
         return response()->json('offer with id: ' . $id . ' wasnt deleted (does not exist)', 420);
     }
+
+    public function getBySubjectId(string $id): JsonResponse{
+        //$offers = Offer::all();
+        $offers = Offer::with("user", "subject")->where("subject_id", $id)->get();
+        return response()->json($offers, 200);
+    }
 }
