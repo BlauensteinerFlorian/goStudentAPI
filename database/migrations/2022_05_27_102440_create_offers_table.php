@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('state')->default('open');
+            $table->string('state')->default('offen');
             $table->string('start_time');
             $table->string('end_time');
             $table->date('date');
