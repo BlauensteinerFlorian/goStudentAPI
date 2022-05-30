@@ -19,6 +19,7 @@ class MessageController extends Controller
 
     public function getById(string $id): JsonResponse{
         $message = Message::find($id);
+        //$message = Message::where("id", $id)->with("user", "offer")->get();
         return response()->json($message, 200);
     }
 

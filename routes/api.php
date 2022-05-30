@@ -46,6 +46,14 @@ Route::get('offers/getBySubjectId/{id}', [OfferController::class, 'getBySubjectI
 
 
 
+// MUSS NOCH IN AUTH
+/* ------------- Users ------------ */
+Route::get('users', [UserController::class, 'index']);
+Route::get('users/{id}', [UserController::class, 'getById']);
+Route::post('users', [UserController::class, 'save']);
+Route::put('users/{id}', [UserController::class, 'update']);
+Route::delete('users/{id}', [UserController::class, 'delete']);
+
 /* -------------                        ------------ */
 /* ------------- Authenticated Requests ------------ */
 /* -------------                        ------------ */
@@ -63,12 +71,7 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::put('offers/{id}', [OfferController::class, 'update']);
     Route::delete('offers/{id}', [OfferController::class, 'delete']);
 
-    /* ------------- Users ------------ */
-    Route::get('users', [UserController::class, 'index']);
-    Route::get('users/{id}', [UserController::class, 'getById']);
-    Route::post('users', [UserController::class, 'save']);
-    Route::put('users/{id}', [UserController::class, 'update']);
-    Route::delete('users/{id}', [UserController::class, 'delete']);
+
 
     /* ------------- Requests ------------ */
     Route::get('requests', [RequestController::class, 'index']);

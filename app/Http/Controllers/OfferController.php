@@ -13,13 +13,14 @@ use App\Models\Offer;
 class OfferController extends Controller
 {
     public function index(): JsonResponse{
-        $offers = Offer::all();
+        //$offers = Offer::all();
+        $offers = Offer::with("user", "subject")->get();
         return response()->json($offers, 200);
     }
 
     public function getById(string $id): JsonResponse{
-        $offer = Offer::find($id);
-        return response()->json($offer, 200);
+        $offer = Offer::where("id", $id)->with("user", "subject")->get();
+        return response()->json($offer[0], 200);
     }
 
     public function save(Request $request): JsonResponse{
