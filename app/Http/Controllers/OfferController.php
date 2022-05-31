@@ -66,4 +66,10 @@ class OfferController extends Controller
         $offers = Offer::with("user", "subject")->where("subject_id", $id)->get();
         return response()->json($offers, 200);
     }
+
+    public function getByUserId(string $id): JsonResponse{
+        //$offers = Offer::all();
+        $offers = Offer::with("user", "subject")->where("user_id", $id)->get();
+        return response()->json($offers, 200);
+    }
 }

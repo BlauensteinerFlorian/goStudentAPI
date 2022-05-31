@@ -40,8 +40,8 @@ Route::get('subjects/{id}', [SubjectController::class, 'getById']);
 /* ------------- Offers ------------ */
 Route::get('offers', [OfferController::class, 'index']);
 Route::get('offers/{id}', [OfferController::class, 'getById']);
-Route::get('offers/getByStudentId/{id}', [OfferController::class, 'getByStudentId']);
-Route::get('offers/getByTutorId/{id}', [OfferController::class, 'getByTutorId']);
+Route::get('offers/getByUserId/{id}', [OfferController::class, 'getByUserId']);
+//Route::get('offers/getByTutorId/{id}', [OfferController::class, 'getByTutorId']);
 Route::get('offers/getBySubjectId/{id}', [OfferController::class, 'getBySubjectId']);
 
 
