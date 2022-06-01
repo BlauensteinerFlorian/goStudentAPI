@@ -39,6 +39,7 @@ Route::get('subjects/{id}', [SubjectController::class, 'getById']);
 
 /* ------------- Offers ------------ */
 Route::get('offers', [OfferController::class, 'index']);
+Route::get('offers/getAllOpen', [OfferController::class, 'getAllOpen']);
 Route::get('offers/{id}', [OfferController::class, 'getById']);
 Route::get('offers/getByUserId/{id}', [OfferController::class, 'getByUserId']);
 Route::get('offers/getByStudentId/{id}', [OfferController::class, 'getByStudentId']);
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::get('messages/{id}', [MessageController::class, 'getById']);
     //Get all messages by user id
     Route::get('messages/getByUserId/{id}', [MessageController::class, 'getByUserId']);
+    Route::get('messages/getByOfferId/{id}', [MessageController::class, 'getByOfferId']);
     Route::post('messages', [MessageController::class, 'save']);
     Route::put('messages/{id}', [MessageController::class, 'update']);
     Route::delete('messages/{id}', [MessageController::class, 'delete']);

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Exception;
 use Psy\Util\Json;
 use App\Models\Message;
+use Illuminate\Database\Eloquent\Builder;
 
 class MessageController extends Controller
 {
@@ -19,7 +20,21 @@ class MessageController extends Controller
 
     public function getById(string $id): JsonResponse{
         $message = Message::find($id);
-        //$message = Message::where("id", $id)->with("user", "offer")->get();
+        return response()->json($message, 200);
+    }
+
+    public function getByOfferId(string $id): JsonResponse{
+        $message = Message::with("user", "offer")->where("offer_id", $id)->get();
+        return response()->json($message, 200);
+    }
+
+    public function getByUserId(string $id): JsonResponse{
+      /*  $posts = Post::whereHas('comments', function (Builder $query) {
+            $query->where('content', 'like', 'code%');
+        })->get();
+      */
+        $message = Message::with("user", "offer")->whereHas('offer',
+            function (Builder $query) use($id) {$query->where('user_id', $id);})->get();
         return response()->json($message, 200);
     }
 
