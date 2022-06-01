@@ -28,6 +28,11 @@ class RequestController extends Controller
         return response()->json($requestmodel, 200);
     }
 
+    public function getByUserId(string $id): JsonResponse{
+        $requestmodel = RequestModel::with("offer", "user")->where("user_id", $id)->get();
+        return response()->json($requestmodel, 200);
+    }
+
     public function getById(string $id): JsonResponse{
         $requestmodel = RequestModel::find($id);
         return response()->json($requestmodel, 200);
@@ -51,6 +56,10 @@ class RequestController extends Controller
         try{
             $requestmodel = RequestModel::find($id);
             $requestmodel->update($request->all());
+
+            if($request->input("state") == "Anfrage angenommen"){
+                $requestmodel::where("id", "!=", $id)->where("offer_id", $request->input("offer_id"))->update(['state' => 'Anfrage abgelehnt']);
+            }
 
             DB::commit();
             return response()->json($requestmodel, 201);

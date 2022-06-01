@@ -41,7 +41,7 @@ Route::get('subjects/{id}', [SubjectController::class, 'getById']);
 Route::get('offers', [OfferController::class, 'index']);
 Route::get('offers/{id}', [OfferController::class, 'getById']);
 Route::get('offers/getByUserId/{id}', [OfferController::class, 'getByUserId']);
-//Route::get('offers/getByTutorId/{id}', [OfferController::class, 'getByTutorId']);
+Route::get('offers/getByStudentId/{id}', [OfferController::class, 'getByStudentId']);
 Route::get('offers/getBySubjectId/{id}', [OfferController::class, 'getBySubjectId']);
 
 
@@ -77,6 +77,7 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::get('requests', [RequestController::class, 'index']);
     Route::get('requests/{id}', [RequestController::class, 'getById']);
     Route::get('getPendingRequestsByOfferId/{id}', [RequestController::class, 'getPendingRequestsByOfferId']);
+    Route::get('getByUserId/{id}', [RequestController::class, 'getByUserId']);
     Route::post('getRequestsByUserIdAndOfferId', [RequestController::class, 'getRequestsByUserIdAndOfferId']);
     Route::post('requests', [RequestController::class, 'save']);
     Route::put('requests/{id}', [RequestController::class, 'update']);
