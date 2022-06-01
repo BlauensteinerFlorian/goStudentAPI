@@ -77,6 +77,7 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::get('requests', [RequestController::class, 'index']);
     Route::get('requests/{id}', [RequestController::class, 'getById']);
     Route::get('requests/getPendingByTutorId/{id}', [RequestController::class, 'getPendingByTutorId']);
+    Route::get('requests/getByUserIdAndOfferId', [RequestController::class, 'getByUserIdAndOfferId']);
     Route::post('requests', [RequestController::class, 'save']);
     Route::put('requests/{id}', [RequestController::class, 'update']);
     Route::delete('requests/{id}', [RequestController::class, 'delete']);

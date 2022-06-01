@@ -17,6 +17,13 @@ class RequestController extends Controller
         return response()->json($requestsmodel, 200);
     }
 
+
+    public function getByUserIdAndOfferId(Request $request): JsonResponse{
+        $requestmodel = RequestModel::where(["user_id", "=", $request->input('user_id')],
+            ["offer_id", "=", $request->input("offer_id")]);
+        return response()->json($requestmodel, 200);
+    }
+
     public function getById(string $id): JsonResponse{
         $requestmodel = RequestModel::find($id);
         return response()->json($requestmodel, 200);
