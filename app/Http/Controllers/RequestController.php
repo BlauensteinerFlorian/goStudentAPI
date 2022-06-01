@@ -23,6 +23,11 @@ class RequestController extends Controller
         return response()->json($requestmodel, 200);
     }
 
+    public function getPendingRequestsByOfferId(string $id): JsonResponse{
+        $requestmodel = RequestModel::where("offer_id", $id)->get();
+        return response()->json($requestmodel, 200);
+    }
+
     public function getById(string $id): JsonResponse{
         $requestmodel = RequestModel::find($id);
         return response()->json($requestmodel, 200);
