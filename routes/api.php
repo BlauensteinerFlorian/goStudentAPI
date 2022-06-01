@@ -41,8 +41,6 @@ Route::get('subjects/{id}', [SubjectController::class, 'getById']);
 Route::get('offers', [OfferController::class, 'index']);
 Route::get('offers/getAllOpen', [OfferController::class, 'getAllOpen']);
 Route::get('offers/{id}', [OfferController::class, 'getById']);
-Route::get('offers/getByUserId/{id}', [OfferController::class, 'getByUserId']);
-Route::get('offers/getByStudentId/{id}', [OfferController::class, 'getByStudentId']);
 Route::get('offers/getBySubjectId/{id}', [OfferController::class, 'getBySubjectId']);
 
 
@@ -52,8 +50,6 @@ Route::get('offers/getBySubjectId/{id}', [OfferController::class, 'getBySubjectI
 Route::get('users', [UserController::class, 'index']);
 Route::get('users/{id}', [UserController::class, 'getById']);
 Route::post('users', [UserController::class, 'save']);
-Route::put('users/{id}', [UserController::class, 'update']);
-Route::delete('users/{id}', [UserController::class, 'delete']);
 
 /* -------------                        ------------ */
 /* ------------- Authenticated Requests ------------ */
@@ -71,6 +67,8 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::post('offers', [OfferController::class, 'save']);
     Route::put('offers/{id}', [OfferController::class, 'update']);
     Route::delete('offers/{id}', [OfferController::class, 'delete']);
+    Route::get('offers/getByUserId/{id}', [OfferController::class, 'getByUserId']);
+    Route::get('offers/getByStudentId/{id}', [OfferController::class, 'getByStudentId']);
 
 
 
@@ -93,4 +91,8 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function (){
     Route::post('messages', [MessageController::class, 'save']);
     Route::put('messages/{id}', [MessageController::class, 'update']);
     Route::delete('messages/{id}', [MessageController::class, 'delete']);
+
+    /* ------------- User ------------ */
+    Route::put('users/{id}', [UserController::class, 'update']);
+    Route::delete('users/{id}', [UserController::class, 'delete']);
 });
