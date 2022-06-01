@@ -24,7 +24,7 @@ class RequestController extends Controller
     }
 
     public function getPendingRequestsByOfferId(string $id): JsonResponse{
-        $requestmodel = RequestModel::where("offer_id", $id)->get();
+        $requestmodel = RequestModel::with("offer", "user")->where("offer_id", $id)->get();
         return response()->json($requestmodel, 200);
     }
 
