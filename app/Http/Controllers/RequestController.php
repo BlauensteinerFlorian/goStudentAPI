@@ -18,11 +18,9 @@ class RequestController extends Controller
     }
 
 
-    public function getByUserIdAndOfferId(Request $request): JsonResponse{
-        //$requestmodel = RequestModel::where(["user_id", "=", $request->input('user_id')],
-          //  ["offer_id", "=", $request->input("offer_id")]);
-        //$requestmodel = RequestModel::where("user_id", $request->input("user_id"))
-        return response()->json($request, 200);
+    public function getRequestsByUserIdAndOfferId(Request $request): JsonResponse{
+        $requestmodel = RequestModel::where("user_id", $request->input('user_id'))->where("offer_id", $request->input("offer_id"))->first();
+        return response()->json($requestmodel, 200);
     }
 
     public function getById(string $id): JsonResponse{
